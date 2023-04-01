@@ -1,0 +1,20 @@
+:link
+display
+scale
+animation-fill-mode: backwards;
+clear;
+background-size
+margin-right: $gutter-horizontal;
+object-fit: 
+shape-outside
+
+background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    -webkit-background-clip: text;
+    color: transparent;
+
+рамка для картинки
+outline: 1.5rem solid $color-primary;
+outline-offset: 2rem;
+
+max-width для desxtop-first
+mix-width для mobile-first

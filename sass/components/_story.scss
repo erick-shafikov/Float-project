@@ -1,0 +1,99 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    // скашиваем прямоугольник(*)
+    transform: skewX(-12deg);
+
+    @include respond(tab-port){
+        width: 100%;
+        padding: 4rem;
+        padding-left: 7rem;
+
+    }
+
+    @include respond(phone){
+        transform: skew(0);
+
+    }
+
+    &__shape {
+        //для обтекания элемента обязательны ширина и высота элемента
+        width: 15rem;
+        height: 15rem;
+        //включаем float
+        float: left;
+        //float по окружности
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        //обрезаем div по кругу
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        //двигаем круг левее
+        //скашиваем обратно содержимое(*)
+        transform:  translateX(-3rem) skewX(12deg);
+        //для позиционирования figcaption(*)
+        position: relative;
+
+        @include respond(phone){
+            transform:  translateX(-3rem) skewX(0);
+    
+        }
+    }
+
+    &__img {
+        height: 100%;
+        //из за сдвига margin изображение не центрируется
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden;
+        transition: all .5s;
+
+
+    }
+
+    &__text{
+        //скашиваем обратно содержимое(*)
+        transform: skewX(12deg);
+
+        @include respond(phone){
+            transform: skewX(0);
+    
+        }
+
+    }
+
+    &__caption{
+        //позиционирования figcaption(**)
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        //для появления figcaption отпустим на 50% ниже(**)
+        //для появления figcaption сделаем полностью прозрачным(**)
+        opacity: 0;
+        transform:  translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        transition: all .5s;
+        //убираем глитч
+        backface-visibility: hidden;
+    }
+//для появления figcaption при наведении
+    &:hover &__caption {
+        //для появления fc отпустим на 50% ниже(**)
+        opacity: 1;
+        //вернем в центр(*)
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}
