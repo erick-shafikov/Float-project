@@ -16,5 +16,10 @@ background-image: linear-gradient(to right, $color-primary-light, $color-primary
 outline: 1.5rem solid $color-primary;
 outline-offset: 2rem;
 
-max-width для desxtop-first
+max-width для desktop-first
 mix-width для mobile-first
+
+тэги для img srcset и sizes
+___________________________________________
+build - процесс
+

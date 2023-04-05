@@ -28,9 +28,6 @@
         height: 15rem;
         //включаем float
         float: left;
-        //float по окружности
-        -webkit-shape-outside: circle(50% at 50% 50%);
-        shape-outside: circle(50% at 50% 50%);
         //обрезаем div по кругу
         -webkit-clip-path: circle(50% at 50% 50%);
         clip-path: circle(50% at 50% 50%);
@@ -39,6 +36,18 @@
         transform:  translateX(-3rem) skewX(12deg);
         //для позиционирования figcaption(*)
         position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        //поддержка для safari(**)
+        @supports ((clip-path: polygon(0 0)) or (webkit-clip-path: polygon(0 0))){
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            //float по окружности
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+            border-radius: none;
+        }
 
         @include respond(phone){
             transform:  translateX(-3rem) skewX(0);

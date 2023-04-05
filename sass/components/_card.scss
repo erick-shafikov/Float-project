@@ -17,6 +17,7 @@
         width: 100%;
         //не будет показывать перевернутую часть карты
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         border-radius: 3px;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
         overflow: hidden;
@@ -165,8 +166,11 @@
         font-weight: 100;
     }
 
+    //Поворот карточки товара невозможен на ipad так VP не подходит для мобильного
+    // используем правило, что только для screen или нет свойства hover
+    @media only screen and (max-width: 56.25px), 
+    only screen and (hover:none){
 
-    @include respond(tab-port){
         height: auto;
         border-radius: 3px;
         background-color: $color-white;
